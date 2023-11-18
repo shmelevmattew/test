@@ -14,6 +14,8 @@ import Item from "./Pages/Item/Item";
 import Sidebar from "./Components/Sidebar";
 import Welcome from "./Pages/Welcome/Welcome";
 import Creator from "./Pages/Creator/Creator";
+import Cart from "./Pages/Cart/Cart";
+import Support from "./Pages/Support/Support";
 
 function App() {
   return (
@@ -39,11 +41,19 @@ function App() {
                       <Item/>
                   </Route>
 
+                  <Route path={"/cart"}>
+                      <Sidebar/>
+                      <Cart/>
+                  </Route>
+                  <Route path={"/support"}>
+                      <Support/>
+                  </Route>
 
                   <Route path={"/"}>
                       <Sidebar/>
                       <Main/>
                   </Route>
+
 
               </Switch>
       </>
