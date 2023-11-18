@@ -8,14 +8,10 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "react-three-fiber";
+import { type } from "@testing-library/user-event/dist/type";
 
 export function PantsModel(props) {
   const { nodes, materials } = useGLTF("/models/pants.glb");
-  materials[".HG_Chinos.002"].color.set(props.color);
-
-  useFrame(() => {
-
-  })
 
   return (
     <group {...props} dispose={null}>
@@ -25,6 +21,7 @@ export function PantsModel(props) {
         receiveShadow
         geometry={nodes.HG_Chinos_Male001.geometry}
         material={materials[".HG_Chinos.002"]}
+        material-color = {props.color}
         morphTargetDictionary={nodes.HG_Chinos_Male001.morphTargetDictionary}
         morphTargetInfluences={nodes.HG_Chinos_Male001.morphTargetInfluences}
       />

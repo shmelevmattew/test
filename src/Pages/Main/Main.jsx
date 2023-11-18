@@ -22,12 +22,9 @@ const Main = () => {
     const items = [
         [
             {src:"./tshirt.png",name:"Футболка"},
-            {src:"./tshirt.png",name:"Футболка"},
-            {src:"./tshirt.png",name:"Футболка"},
-            {src:"./tshirt.png",name:"Футболка"},
-            {src:"./tshirt.png",name:"Футболка"},
-            {src:"./tshirt.png",name:"Футболка"},
-            {src:"./tshirt.png",name:"Футболка"},
+            {src:"./tshirt_red.png",name:"Футболка"},
+            {src:"./tshirt_green.png",name:"Футболка"},
+            {src:"./tshirt_blue.png",name:"Футболка"}
         ],
         [
             {src:"./jeans.png",name:"Джинсы"},
@@ -115,7 +112,7 @@ const Main = () => {
             }}>
                 <ambientLight/>
                 <Suspense>
-                    <Character position={[0, -1, 3.25]} rotation={[0, 0, 0]} color={color}/>
+                    <Character position={[0, -3, 0]} rotation={[0, 0, 0]} color={color}/>
                 </Suspense>
 
                 
@@ -123,6 +120,7 @@ const Main = () => {
                 maxPolarAngle = {-Math.PI / 2} 
                 minPolarAngle = {Math.PI / 2}
                 enablePan = {false}
+                enableZoom = {false}
                 />
             </Canvas>
             </div>

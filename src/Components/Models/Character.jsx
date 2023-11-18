@@ -14,7 +14,6 @@ export function Character(props) {
     }, [props.position])
 
     useEffect(() => {
-        
         setRotation(props.rotation)
     }, [props.rotation])
 
@@ -28,9 +27,9 @@ export function Character(props) {
 
     return( 
         <>
-            <PersonModel position = {position} rotation = {rotation} />
-            <PantsModel position = {position} rotation = {rotation} color={props.color}/>
-            <ShirtModel position = {position} rotation = {rotation} scale ={[1, 1, 1.075]}/>
+            <PersonModel position = {position} rotation = {rotation} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
+            <PantsModel position = {position} rotation = {rotation} color={props.color} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
+            <ShirtModel position = {position} rotation = {rotation} scale ={[1 * 3, 1 * 3, 1.075 * 3]}/>
         </>
     )
 }
