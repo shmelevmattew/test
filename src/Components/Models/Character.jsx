@@ -19,18 +19,17 @@ export function Character(props) {
     }, [props.rotation])
 
     useFrame(() => {
-
-            setRotation(prevRotation => {
-                let newRotation = [...prevRotation];
-                if (newRotation.length === 3) newRotation[1] += 0.01;
-                return newRotation;
-            });
+        setRotation(prevRotation => {
+            let newRotation = [...prevRotation];
+            //if (newRotation.length === 3) newRotation[1] += 0.01;
+            return newRotation;
+        });
     })
 
     return( 
         <>
-            <PersonModel position = {position} rotation = {rotation}/>
-            <PantsModel position = {position} rotation = {rotation}/>
+            <PersonModel position = {position} rotation = {rotation} />
+            <PantsModel position = {position} rotation = {rotation} color={props.color}/>
             <ShirtModel position = {position} rotation = {rotation} scale ={[1, 1, 1.075]}/>
         </>
     )

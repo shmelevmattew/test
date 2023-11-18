@@ -1,7 +1,7 @@
 .items{
   padding: 53px 0 0 calc(156px + 93px);
   display: flex;
-  justify-content: space-between;
+  gap: 115px;
 }
 .search{
   list-style-type: none;
@@ -148,7 +148,7 @@
   }
 }
 .character{
-  width: 400px;
+  width: 850px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -4,11 +4,18 @@ Command: npx gltfjsx@6.2.15 pants.glb
 */
 
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "react-three-fiber";
 
 export function PantsModel(props) {
   const { nodes, materials } = useGLTF("/models/pants.glb");
+  materials[".HG_Chinos.002"].color.set(props.color);
+
+  useFrame(() => {
+
+  })
 
   return (
     <group {...props} dispose={null}>

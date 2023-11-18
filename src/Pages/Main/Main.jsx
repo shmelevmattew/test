@@ -16,6 +16,8 @@ import { ShirtModel } from '../../Components/Models/ShirtModel';
 import { Character } from '../../Components/Models/Character';
 import { Suspense } from 'react';
 const Main = () => {
+    const [color, setColor] = useState([0, 0, 0])
+
     const menuItems = ["футболки","штаны","ботинки","худи","свитшоты","юбки" ]
     const items = [
         [
@@ -106,19 +108,22 @@ const Main = () => {
             </div>
 
             <div className={styles.character}>
+            <button onClick={(e) => {setColor([0, 1, 0])}}> Зеленый</button>
+            <button onClick={(e) => {setColor([1, 0, 0])}}> Красный</button>
             <Canvas style={{
                 backgroundColor: '#aaa'
             }}>
                 <ambientLight/>
                 <Suspense>
-                    <Character position={[0, -1.5, 2]} rotation={[0, 0, 0]}/>
+                    <Character position={[0, -1, 3.25]} rotation={[0, 0, 0]} color={color}/>
                 </Suspense>
+
                 
-                {/* <OrbitControls 
+                <OrbitControls 
                 maxPolarAngle = {-Math.PI / 2} 
                 minPolarAngle = {Math.PI / 2}
                 enablePan = {false}
-                /> */}
+                />
             </Canvas>
             </div>
 
