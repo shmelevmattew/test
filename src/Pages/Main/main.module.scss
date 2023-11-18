@@ -148,13 +148,10 @@
   }
 }
 .character{
-  width: 100%;
+  width: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  &_img{
-    height: calc(100vh - 100px);
-  }
 }
 
 .active{

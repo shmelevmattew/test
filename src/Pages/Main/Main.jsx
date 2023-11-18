@@ -8,6 +8,13 @@ import {
     BrowserRouter as Router,
     Link,
 } from 'react-router-dom';
+import { Canvas } from 'react-three-fiber';
+import { PersonModel } from '../../Components/Models/PersonModel';
+import { OrbitControls } from '@react-three/drei';
+import { PantsModel } from '../../Components/Models/Pants';
+import { ShirtModel } from '../../Components/Models/ShirtModel';
+import { Character } from '../../Components/Models/Character';
+import { Suspense } from 'react';
 const Main = () => {
     const menuItems = ["футболки","штаны","ботинки","худи","свитшоты","юбки" ]
     const items = [
@@ -99,7 +106,20 @@ const Main = () => {
             </div>
 
             <div className={styles.character}>
-                <img src={character} className={styles.character_img} alt=""/>
+            <Canvas style={{
+                backgroundColor: '#aaa'
+            }}>
+                <ambientLight/>
+                <Suspense>
+                    <Character position={[0, -1.5, 2]} rotation={[0, 0, 0]}/>
+                </Suspense>
+                
+                {/* <OrbitControls 
+                maxPolarAngle = {-Math.PI / 2} 
+                minPolarAngle = {Math.PI / 2}
+                enablePan = {false}
+                /> */}
+            </Canvas>
             </div>
 
         </div>
