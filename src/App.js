@@ -13,15 +13,23 @@ import Welcome from "./Pages/Welcome/Welcome";
 import Creator from "./Pages/Creator/Creator";
 import Cart from "./Pages/Cart/Cart";
 import Support from "./Pages/Support/Support";
-
+import {characterContext} from "./character";
+import {useState} from "react";
 function App() {
+    const [character,setCharacter ]= useState({
+        top:"tshirt",
+        topColor:"#000",
+        bottom:"jeans",
+        bottomColor:"#000"
+    })
   return (
       <>
-
+          <characterContext.Provider value={{
+              character,setCharacter
+          }}>
               <Switch>
 
                   <Route path={"/loading"}>
-                      <Sidebar/>
                       <LoadingScreen/>
                   </Route>
 
@@ -53,6 +61,8 @@ function App() {
 
 
               </Switch>
+
+          </characterContext.Provider>
       </>
 
   );

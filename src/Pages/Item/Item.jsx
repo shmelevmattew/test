@@ -1,4 +1,4 @@
-import React, {Suspense, useState} from 'react';
+import React, {Suspense, useContext, useState} from 'react';
 import styles from "./item.module.scss"
 import star from "../../Img/star.svg";
 import size_type from "../../Img/size_type.svg"
@@ -6,15 +6,16 @@ import {useParams} from "react-router-dom";
 import {Character} from "../../Components/Models/Character";
 import {OrbitControls} from "@react-three/drei";
 import {Canvas} from "react-three-fiber";
+import {characterContext} from "../../character";
 const Item = () => {
     const params = useParams()
     const items = [
-        {src:"/tshirts/tshirt",name:"Футболка",id:1},
-        {src:"/jeans/jeans",name:"Джинсы",id:2},
-        {src:"/boots",name:"Ботинки",id:3},
-        {src:"/hoodie",name:"Худи",id:4},
-        {src:"/sweatshirts/sweatshirt",name:"Свитшот",id:5},
-        {src:"/ubka",name:"Юбка",id:6},
+        {src:"/tshirts/tshirt",name:"tshirt",id:1,top:true},
+        {src:"/jeans/jeans",name:"jeans",id:2,top:false},
+        {src:"/boots",name:"boots",id:3,top:false},
+        {src:"/hoodie",name:"hoodie",id:4,top:true},
+        {src:"/sweatshirts/sweatshirt",name:"sweatshot",top:true},
+        {src:"/ubka",name:"ubka",id:6,top:false},
     ]
     const colors = {
         default:{
@@ -39,18 +40,23 @@ const Item = () => {
         },
 
     }
+    const character = useContext(characterContext)
     const [fit,setFit] = useState(false)
     const sizes = [40,42,44,46,48,50,52,54,56,58]
     const [selectedColor,setSelectedColor] = useState(colors.default)
-    console.log(items[params.id].src)
     return (
         <div className={styles.items}>
             <div className={styles.character_model}>
                 <Canvas style={{
-                    backgroundColor: '#aaa'}}>
+                    backgroundColor: '#fff'}}>
                     <ambientLight/>
                     <Suspense>
-                        <Character position={[0, -3, 0]} color={selectedColor.hex} selectedCategoryId = {params.id}/>
+                        <Character position={[0, -3, 0]} rotation={[0, 0, 0]}
+                                   top={character.character.top}
+                                   topColor={character.character.topColor}
+                                   bottom={character.character.bottom}
+                                   bottomColor={character.character.bottomColor}
+                        />
                     </Suspense>
 
 
@@ -63,7 +69,7 @@ const Item = () => {
                 </Canvas>
             </div>
             <div className={styles.character}>
-                {fit? null:<img src={`${items[params.id - 1].src + selectedColor.color}.png`} className={styles.character_item} alt="photo"/>}
+                {fit? null:<div className={styles.canvas}><img src={`${items[params.id - 1].src + selectedColor.color}.png`} className={styles.character_item} alt="photo"/></div>}
             </div>
             <div className={styles.description}>
                 <h1 className={styles.description_title}>Кайфовая футболка </h1>
@@ -81,27 +87,69 @@ const Item = () => {
                 <div className={styles.colors}>
                     <div className={styles.color} style={{
                         backgroundColor:"#008000"
-                    }} onClick={()=> {
-                    setSelectedColor(colors.green)
-                    }}>
+                    }}
+                         onClick={()=> {
+                             character.setCharacter((prev)=>{
+                                 return items[params.id - 1].top? {
+                                     ...prev,
+
+                                     top: items[params.id - 1].name,
+                                     topColor:"#008000",
+                                 }:{
+                                     ...prev,
+                                     bottom: items[params.id - 1].name,
+                                     bottomColor:"#008000",
+                                 }
+                    })}}
+                    >
                     </div>
                     <div className={styles.color} style={{
                         backgroundColor:"#B00000"
                     }} onClick={()=> {
-                        setSelectedColor(colors.red)
-                    }}>
+                        character.setCharacter((prev)=>{
+                            return items[params.id - 1].top? {
+                                ...prev,
+
+                                top: items[params.id - 1].name,
+                                topColor:"#B00000",
+                            }:{
+                                ...prev,
+                                bottom: items[params.id - 1].name,
+                                bottomColor:"#B00000",
+                            }
+                        })}}>
                     </div>
                     <div className={styles.color} style={{
                         backgroundColor:"#0000FF"
                     }} onClick={()=> {
-                        setSelectedColor(colors.blue)
-                    }}>
+                        character.setCharacter((prev)=>{
+                            return items[params.id - 1].top? {
+                                ...prev,
+
+                                top: items[params.id - 1].name,
+                                topColor:"#0000FF",
+                            }:{
+                                ...prev,
+                                bottom: items[params.id - 1].name,
+                                bottomColor:"#0000FF",
+                            }
+                        })}}>
                     </div>
                     <div className={styles.color} style={{
                         backgroundColor:"#1C1C1C"
                     }} onClick={()=> {
-                        setSelectedColor(colors.default)
-                    }}>
+                        character.setCharacter((prev)=>{
+                            return items[params.id - 1].top? {
+                                ...prev,
+
+                                top: items[params.id - 1].name,
+                                topColor:"#1C1C1C",
+                            }:{
+                                ...prev,
+                                bottom: items[params.id - 1].name,
+                                bottomColor:"#1C1C1C",
+                            }
+                        })}}>
                     </div>
                 </div>
                 <div className={styles.description_size}>

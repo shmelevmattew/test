@@ -13,6 +13,7 @@ const CATEGORIES = {
 };
 
 export function Character(props) {
+
     const [position, setPosition] = useState();
     const [selectedCategoryId, setSelectedCategoryId] = useState(1)
 
@@ -29,13 +30,13 @@ export function Character(props) {
         <>
             <PersonModel position = {position} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
 
-            <PantsModel position = {position} color = {CATEGORIES[selectedCategoryId] === "Джинсы" ? props.color : "#000"} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
+            <PantsModel position = {position} color = {props.bottomColor ? props.bottomColor : "#000"} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
             
             {
-            CATEGORIES[selectedCategoryId] === "Футболка" ?
-            <ShirtModel position = {position}  color={CATEGORIES[selectedCategoryId] !== "Джинсы" ? props.color : "#000"} scale ={[1 * 3, 1 * 3, 1.075 * 3]}/>
+            props.top === "tshirt" ?
+            <ShirtModel position = {position}   color={ props.topColor? props.topColor : "#000"} scale ={[1 * 3, 1 * 3, 1.075 * 3]}/>
             :
-            <Sweatshirt position = {position}  color={CATEGORIES[selectedCategoryId] !== "Джинсы" ? props.color : "#000"} scale ={[1.01 * 3, 1 * 3, 1.085 * 3]}/>
+            <Sweatshirt position = {position}  color={ props.topColor? props.topColor : "#000"} scale ={[1.01 * 3, 1 * 3, 1.085 * 3]}/>
             }
         </>
     )

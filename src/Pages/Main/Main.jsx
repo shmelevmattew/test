@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './main.module.scss'
 import test from '../../Img/test.png'
 import character from '../../Img/char.png'
@@ -15,9 +15,11 @@ import { PantsModel } from '../../Components/Models/Pants';
 import { ShirtModel } from '../../Components/Models/ShirtModel';
 import { Character } from '../../Components/Models/Character';
 import { Suspense } from 'react';
+import {characterContext} from "../../character";
 const Main = () => {
     const [color, setColor] = useState("#000")
-
+    const character = useContext(characterContext)
+    console.log(character)
     const menuItems = ["футболки","штаны","ботинки","худи","свитшоты","юбки" ]
     const items = [
         [
@@ -107,14 +109,17 @@ const Main = () => {
             </div>
 
             <div className={styles.character}>
-            <button onClick={(e) => {setColor("#00ff00")}}> Зеленый</button>
-            <button onClick={(e) => {setColor("#ff0000")}}> Красный</button>
             <Canvas style={{
-                backgroundColor: '#aaa'
+                backgroundColor: '#fff'
             }}>
                 <ambientLight/>
                 <Suspense>
-                    <Character position={[0, -3, 0]} rotation={[0, 0, 0]} color={color}/>
+                    <Character position={[0, -3, 0]} rotation={[0, 0, 0]} color={color}
+                               top={character.character.top}
+                               topColor={character.character.topColor}
+                               bottom={character.character.bottom}
+                               bottomColor={character.character.bottomColor}
+                    />
                 </Suspense>
 
                 
