@@ -21,48 +21,48 @@ const Main = () => {
     const menuItems = ["футболки","штаны","ботинки","худи","свитшоты","юбки" ]
     const items = [
         [
-            {src:"./tshirts/tshirt.png",name:"Футболка"},
-            {src:"./tshirts/tshirt_red.png",name:"Футболка"},
-            {src:"./tshirts/tshirt_green.png",name:"Футболка"},
-            {src:"./tshirts/tshirt_blue.png",name:"Футболка"}
+            {src:"./tshirts/tshirt.png",name:"Футболка", color:"#1C1C1C",id:1},
+            {src:"./tshirts/tshirt_red.png",name:"Футболка", color:"#B00000",id:1},
+            {src:"./tshirts/tshirt_green.png",name:"Футболка", color:"#008000",id:1},
+            {src:"./tshirts/tshirt_blue.png",name:"Футболка", color:"#0000FF",id:1}
         ],
         [
-            {src:"./jeans/jeans.png",name:"Джинсы"},
-            {src:"./jeans/jeans_red.png",name:"Джинсы"},
-            {src:"./jeans/jeans_green.png",name:"Джинсы"},
-            {src:"./jeans/jeans_blue.png",name:"Джинсы"},
+            {src:"./jeans/jeans.png",name:"Джинсы",color: "#1C1C1C",id:2},
+            {src:"./jeans/jeans_red.png",name:"Джинсы",color: "#008000",id:2},
+            {src:"./jeans/jeans_green.png",name:"Джинсы",color: "#008000",id:2},
+            {src:"./jeans/jeans_blue.png",name:"Джинсы",color: "#0000FF",id:2},
 
         ],
         [
-            {src:"./boots.png",name:"Ботинки"},
-            {src:"./boots.png",name:"Ботинки"},
-            {src:"./boots.png",name:"Ботинки"},
-            {src:"./boots.png",name:"Ботинки"},
+            {src:"./boots.png",name:"Ботинки",id:3},
+            {src:"./boots.png",name:"Ботинки",id:3},
+            {src:"./boots.png",name:"Ботинки",id:3},
+            {src:"./boots.png",name:"Ботинки",id:3},
         ],
         [
-            {src:"./hoodie.png",name:"Худи"},
-            {src:"./hoodie.png",name:"Худи"},
-            {src:"./hoodie.png",name:"Худи"},
-            {src:"./hoodie.png",name:"Худи"},
-            {src:"./hoodie.png",name:"Худи"},
-            {src:"./hoodie.png",name:"Худи"},
+            {src:"./hoodie.png",name:"Худи",id:4},
+            {src:"./hoodie.png",name:"Худи",id:4},
+            {src:"./hoodie.png",name:"Худи",id:4},
+            {src:"./hoodie.png",name:"Худи",id:4},
+            {src:"./hoodie.png",name:"Худи",id:4},
+            {src:"./hoodie.png",name:"Худи",id:4},
         ],
         [
-            {src:"./sweatshirts/sweatshirt_black.png",name:"Свитшот"},
-            {src:"./sweatshirts/sweatshirt_red.png",name:"Свитшот"},
-            {src:"./sweatshirts/sweatshirt_green.png",name:"Свитшот"},
-            {src:"./sweatshirts/sweatshirt_blue.png",name:"Свитшот"},
-            {src:"./sweatshirts/sweatshirt_white.png",name:"Свитшот"},
+            {src:"./sweatshirts/sweatshirt.png",name:"Свитшот",color: "#1C1C1C",id:5},
+            {src:"./sweatshirts/sweatshirt_red.png",name:"Свитшот",color: "#008000",id:5},
+            {src:"./sweatshirts/sweatshirt_green.png",name:"Свитшот",color: "#008000",id:5},
+            {src:"./sweatshirts/sweatshirt_blue.png",name:"Свитшот",color: "#0000FF",id:5},
+            {src:"./sweatshirts/sweatshirt.png",name:"Свитшот",color: "#FFFAFA",id:5},
 
         ],
         [
-            {src:"./ubka.png",name:"Юбка"},
-            {src:"./ubka.png",name:"Юбка"},
-            {src:"./ubka.png",name:"Юбка"},
-            {src:"./ubka.png",name:"Юбка"},
-            {src:"./ubka.png",name:"Юбка"},
-            {src:"./ubka.png",name:"Юбка"},
-            {src:"./ubka.png",name:"Юбка"},
+            {src:"./ubka.png",name:"Юбка",id:6},
+            {src:"./ubka.png",name:"Юбка",id:6},
+            {src:"./ubka.png",name:"Юбка",id:6},
+            {src:"./ubka.png",name:"Юбка",id:6},
+            {src:"./ubka.png",name:"Юбка",id:6},
+            {src:"./ubka.png",name:"Юбка",id:6},
+            {src:"./ubka.png",name:"Юбка",id:6},
 
         ],
     ]
@@ -96,7 +96,7 @@ const Main = () => {
                         {
                             items[selectedCategory].map((item,index)=>{
                                 return (
-                                        <Product img={item.src}/>
+                                        <Product img={item.src} id={item.id}/>
                                 )
                             })
                         }

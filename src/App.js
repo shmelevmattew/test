@@ -7,9 +7,6 @@ import {
 } from 'react-router-dom';
 import LoadingScreen from "./Pages/LodadingScreen/LoadingScreen";
 import Main from "./Pages/Main/Main";
-import shopIcon from "./Img/shop.svg"
-import userIcon from "./Img/user.svg"
-import exitIcon from "./Img/exit.svg"
 import Item from "./Pages/Item/Item";
 import Sidebar from "./Components/Sidebar";
 import Welcome from "./Pages/Welcome/Welcome";
@@ -36,7 +33,7 @@ function App() {
                       <Creator/>
                   </Route>
 
-                  <Route path={"/item"}>
+                  <Route path={"/item/:id"}>
                       <Sidebar/>
                       <Item/>
                   </Route>

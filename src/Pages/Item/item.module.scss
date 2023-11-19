@@ -86,6 +86,11 @@
   gap: 12px;
   margin-top: 13px;
 }
+.color{
+  height: 50px;
+  width: 60px;
+  border-radius: 10px;
+}
 .sizes{
   &_title{
     color: #1A1A1A;
@@ -164,4 +169,19 @@
     line-height: normal;
   }
 
+}
+.character_item{
+  height: 450px;
+  width: 450px;
+  position: absolute;
+  background-color: white;
+  left: 400px;
+}
+.character_model{
+  height: 450px;
+  width: 450px;
+  position: absolute;
+  top: 173px;
+  background-color: white;
+  left: 400px;
 }
