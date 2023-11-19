@@ -12,6 +12,7 @@ export function Sweatshirt(props) {
         receiveShadow
         geometry={nodes.HG_Sweater_1_Male001.geometry}
         material={materials[".HG_Sweater1"]}
+        material-color = {props.color}
         morphTargetDictionary={nodes.HG_Sweater_1_Male001.morphTargetDictionary}
         morphTargetInfluences={nodes.HG_Sweater_1_Male001.morphTargetInfluences}
       />

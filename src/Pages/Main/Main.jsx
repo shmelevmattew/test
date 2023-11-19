@@ -67,6 +67,8 @@ const Main = () => {
         ],
     ]
     const [selectedCategory,setSelectedCategory] = useState(0)
+
+    
     return (
         <div className={styles.items}>
             <div>

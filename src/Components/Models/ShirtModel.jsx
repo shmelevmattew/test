@@ -16,6 +16,7 @@ export function ShirtModel(props) {
         receiveShadow
         geometry={nodes.HG_TSHIRT_Male001.geometry}
         material={materials[".HG_TSHIRT.003"]}
+        material-color = {props.color}
         morphTargetDictionary={nodes.HG_TSHIRT_Male001.morphTargetDictionary}
         morphTargetInfluences={nodes.HG_TSHIRT_Male001.morphTargetInfluences}
       />

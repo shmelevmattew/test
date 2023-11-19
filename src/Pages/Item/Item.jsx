@@ -50,7 +50,7 @@ const Item = () => {
                     backgroundColor: '#aaa'}}>
                     <ambientLight/>
                     <Suspense>
-                        <Character position={[0, -3, 0]} rotation={[0, 0, 0]} color={selectedColor.hex}/>
+                        <Character position={[0, -3, 0]} color={selectedColor.hex} selectedCategoryId = {params.id}/>
                     </Suspense>
 
 

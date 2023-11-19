@@ -6,27 +6,37 @@ import { useFrame, useThree } from "react-three-fiber";
 import { Sweatshirt } from "./Sweatshirt";
 
  
+const CATEGORIES = {
+    1: "Футболка",
+    2: "Джинсы",
+    5: "Свитшот"
+};
+
 export function Character(props) {
     const [position, setPosition] = useState();
-    const [rotation, setRotation] = useState([0, 0, 0]);
-
+    const [selectedCategoryId, setSelectedCategoryId] = useState(1)
 
     useEffect(() => {
         setPosition(props.position)
     }, [props.position])
 
     useEffect(() => {
-        setRotation(props.rotation)
-    }, [props.rotation])
-
+        setSelectedCategoryId(props.selectedCategoryId);
+    }, [props.selectedCategoryId]);
 
 
     return( 
         <>
-            <PersonModel position = {position} rotation = {rotation} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
-            <PantsModel position = {position} rotation = {rotation} color={props.color} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
-            {/* <ShirtModel position = {position} rotation = {rotation} scale ={[1 * 3, 1 * 3, 1.075 * 3]}/> */}
-            <Sweatshirt position = {position} rotation = {rotation} color={props.color} scale ={[1.01 * 3, 1 * 3, 1.085 * 3]}/>
+            <PersonModel position = {position} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
+
+            <PantsModel position = {position} color = {CATEGORIES[selectedCategoryId] === "Джинсы" ? props.color : "#000"} scale ={[1 * 3, 1 * 3, 1 * 3]}/>
+            
+            {
+            CATEGORIES[selectedCategoryId] === "Футболка" ?
+            <ShirtModel position = {position}  color={CATEGORIES[selectedCategoryId] !== "Джинсы" ? props.color : "#000"} scale ={[1 * 3, 1 * 3, 1.075 * 3]}/>
+            :
+            <Sweatshirt position = {position}  color={CATEGORIES[selectedCategoryId] !== "Джинсы" ? props.color : "#000"} scale ={[1.01 * 3, 1 * 3, 1.085 * 3]}/>
+            }
         </>
     )
 }
